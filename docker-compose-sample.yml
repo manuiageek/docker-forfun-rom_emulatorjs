@@ -1,0 +1,41 @@
+services:
+  emulatorjs:
+    image: lscr.io/linuxserver/emulatorjs:latest
+    container_name: emulatorjs
+    environment:
+      - PUID=1000 # User ID for the Transmission container
+      - PGID=1000 # Group ID for the Transmission container
+      - TZ=Pacific/Tahiti # Timezone setting
+      - SUBFOLDER=/ #optional
+    volumes:
+      - /media/my_user/DOCKER-STORAGE/dock_serv_emulatorjs/config:/config
+      - /media/my_user/DOCKER-STORAGE/dock_serv_emulatorjs/data:/data
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/3do:/data/3do/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Arcade:/data/arcade/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Atari 2600:/data/atari2600/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Atari 5200:/data/atari5200/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Atari 7800:/data/atari7800/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Colecovision:/data/colecovision/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/GameBoy:/data/gb/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/GameBoy Advance:/data/gba/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/GameBoy Color:/data/gbc/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Jaguar:/data/jaguar/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Atari Lynx:/data/lynx/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Nintendo 64:/data/n64/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Nintendo DS:/data/nds/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Neo Geo Pocket:/data/ngp/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Nintendo NES:/data/nes/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/PC Engine:/data/pce/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/PlayStation:/data/psx/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Sega 32x:/data/sega32x/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Sega CD:/data/segaCD/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Sega Game Gear:/data/segaGG/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Sega Mega Drive:/data/segaMD/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Sega Master System:/data/segaMS/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Sega Saturn:/data/segaSaturn/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/Nintendo SNES:/data/snes/roms:ro
+      - /media/my_user/DOCKER-STORAGE/SHARE/ROMS/VirtualBoy:/data/vb/roms:ro
+    ports:
+      - 3000:3000 # Interface Port for game administration
+      - 80:80     # Interface Port for web play
+    restart: unless-stopped
